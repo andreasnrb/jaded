@@ -9,10 +9,12 @@ $scope = array(
 switch(true) {
     case is_single():
         $posts = $wp_query->get_posts();
+        global $post;
         $post = null;
         if ($posts)
             $post = array_shift($posts);
         $file = 'posts/single';
+        setup_postdata($post);
         $scope['post'] = $post;
         break;
     case is_404():
