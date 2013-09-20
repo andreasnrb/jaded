@@ -1,0 +1,9 @@
+extends layouts\default
+block content
+  if posts
+      each post in posts
+        include posts/list-post
+  else
+      include posts/not-found
+
+

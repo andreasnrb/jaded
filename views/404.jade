@@ -1,0 +1,15 @@
+extends layouts\default
+include mixins/dialog
+block content
+    h1=__('Oh no nothing was found','jaded')
+    p What the hell are you doing man.
+    | You broke everything.
+
+    .one
+        mixin dialog
+
+    .two
+        mixin dialog-title('dialog-title')
+
+    .three
+        mixin dialog-title-desc('dialog-title-desc', 'Just a mixin')
