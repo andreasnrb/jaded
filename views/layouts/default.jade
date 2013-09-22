@@ -4,15 +4,14 @@ html
         title
             =title
         !=wp_head()
-        style.
-            #site_title {
-                font-size:2em;
-            }
-    body
-        header
-          include header/default
-        block content
+        link(rel='stylesheet',href=get_stylesheet_directory_uri()+'/style.css', type='text/css', media='all')
 
+    body(class=get_body_classes())
+        #page.hfeed.site
+            header(id='masthead',class='site-header', role='banner')
+              include header/default
+            #main.site-main
+                block content
 
-        footer
-          include footer/default
+            footer.content
+              include footer/default

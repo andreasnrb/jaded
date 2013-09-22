@@ -1,2 +1,7 @@
-ul
-    =wp_list_pages()
+div#navbar.navbar
+    nav.site-navigation.navigation.main-navigation(role='navigation')
+        h3.menu-toggle
+            !=__('Menu', 'jaded')
+            a.screen-reader-text.skip-link(href='#content', title=__('Skip to content', 'jaded'))
+                =__('Skip to content', 'jaded')
+        !=wp_nav_menu( menu_args)

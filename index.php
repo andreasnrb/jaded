@@ -1,11 +1,15 @@
 <?php
+use CLMVC\Components\Posts\Post;
+
 global $wp_query;
 $engine = \CLMVC\Controllers\Render\RenderingEngines::getEngine('jade', get_stylesheet_directory() . '/views');
 
 $scope = array(
         'title' => wp_title(' | ', false),
         'site_title' => get_bloginfo('name'),
-        'description' => get_bloginfo( 'description', 'display' ));
+        'description' => get_bloginfo( 'description', 'display' ),
+        'menu_args' => array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' )
+);
 
 switch(true) {
     case is_page():
@@ -19,7 +23,7 @@ switch(true) {
             $post = array_shift($posts);
         $file = 'posts/single';
         setup_postdata($post);
-        $scope['post'] = $post;
+        $scope['post'] = new Post();
         break;
     case is_404():
         $file = '404';

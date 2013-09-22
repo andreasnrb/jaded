@@ -1,4 +1,6 @@
-#site_title
-  span
+a.home-link(href=get_home_url(), rel='home', title=get_bloginfo('name','display'))
+  h1.site-title
     =site_title
+  h2.site-description
+    =get_bloginfo('description')
 include header/menu
