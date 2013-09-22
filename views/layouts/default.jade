@@ -3,5 +3,16 @@ html
     head
         title
             =title
+        !=wp_head()
+        style.
+            #site_title {
+                font-size:2em;
+            }
     body
+        header
+          include header/default
         block content
+
+
+        footer
+          include footer/default

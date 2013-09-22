@@ -9,3 +9,7 @@ License: GPL v2.0
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: jaded
 */
+
+#site_title {
+    font-size:2em;
+}

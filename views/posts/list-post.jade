@@ -1,10 +1,13 @@
-article(id='post-'+get_the_ID(), class=get_post_classes(), pubdate)
+article(id='post-'+post.id, class=get_post_classes(), pubdate)
     header.entry-header
         h2.entry-title
-            a(href=get_the_permalink(), rel='bookmark')
-                span= get_the_title()
+            a(href=post.permalink, rel='bookmark')
+                span= post.title()
         .meta
-        time.entry-date(datetime=get_the_date())
-            !=get_post_entry_date()
+          .author
+            span by
+              a(href= post.authorUrl())=post.author()
+          time.entry-date(datetime=get_the_date())
+             !=get_post_entry_date()
     #post_content
-        != get_the_content()
+        != post.content()

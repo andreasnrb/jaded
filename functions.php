@@ -1,4 +1,7 @@
 <?php
+
+use CLMVC\Components\Posts\Post;
+
 global $wp_query;
 function get_post_classes() {
     return join( ' ', get_post_class() );
@@ -30,34 +33,13 @@ function get_post_entry_date($link = true, $test = '') {
     return $date;
 }
 
-class PostTest {
-    private $post;
 
-    function __construct($post) {
-
-        $this->post = $post;
-    }
-    function title() {
-        return $this->post->post_title;
-    }
-    function content() {
-        return apply_filters('the_content', $this->post->post_content);
-    }
-
-    function __get($property) {
-        return $this->$property();
-    }
-
-    function __isset($property) {
-        return true;
-    }
-}
-
-function jade_filter(&$current_post) {
+function jade_filter($current_post) {
     global $post;
     $post = $current_post;
     setup_postdata($post);
-//    $post = new PostTest($post);
+    $cl_post = new Post();
+    return $cl_post;
 }
 
 
