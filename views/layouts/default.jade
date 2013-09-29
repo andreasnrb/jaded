@@ -8,10 +8,11 @@ html
 
     body(class=get_body_classes())
         #page.hfeed.site
-            header(id='masthead',class='site-header', role='banner')
+            header#masthead.site-header(role='banner')
               include header/default
             #main.site-main
-                block content
+                #primary.site-content(role='main')
+                    block content
 
-            footer.content
+            footer#colophon.site-footer(role='contentinfo')
               include footer/default

@@ -1,13 +1,28 @@
 article(id='post-'+post.id, class=get_post_classes(), pubdate)
     header.entry-header
-        h2.entry-title
-            a(href=post.permalink(), rel='bookmark')
-                span= post.title()
-        .meta
-          .author
-            span by
-              a(href= post.authorUrl())=post.author()
-          time.entry-date(datetime=get_the_date())
-             !=get_post_entry_date()
-    #post_content
-        != post.content()
+        if has_post_thumbnail()
+            .entry-thumbnail
+                !=the_post_thumbnail()
+        if is_single()
+            h1.entry-title
+                =post.title()
+        else
+            h1.entry-title
+                a(href=post.permalink(), rel='bookmark')
+                    =post.title()
+        .entry-meta
+            !=edit_post_link(__('Edit','jaded'),'<span class="edit-link">','</span>')
+    if is_search()
+        .entry-summary
+            post.excerpt
+    else
+        .entry-content
+            != post.content()
+    footer.entry-meta
+        if comments_open()
+            if is_single()
+                .comments-link
+                    !=comments_popup_link('<span class="leave-reply">'+__('Leave a comment','jaded')+'</span>', __( 'One comment so far', 'jaded' ),__('View all % comments','jaded'))
+        if is_single()
+            if (get_the_author_meta( 'description' ) && is_multi_author())
+                include posts/author-bio
